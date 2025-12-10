@@ -3,7 +3,7 @@
   "displayName": "saveCodeSnippetsAndReusePlugins",
   "publisher": "jyeontu",
   "description": "代码片段管理插件",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "JYeontn <jyeontu@163.com>",
   "engines": {
     "vscode": "^1.95.0"
@@ -128,6 +128,6 @@
     "g": "^2.0.1"
   },
   "volta": {
-    "node": "16.20.2"
+    "node": "20.19.6"
   }
 }

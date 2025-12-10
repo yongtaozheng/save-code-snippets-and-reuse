@@ -2,6 +2,10 @@
 
 All notable changes to the "codedemo" extension will be documented in this file.
 
+## [0.1.2]
+
+- 修复自动补全时没有替换模板字符的 bug
+
 ## [0.1.1]
 
 > 新增模版字符替换规则

@@ -1,5 +1,5 @@
 const vscode = require("vscode");
-const { getExtensionFile } = require("../utils/utils.js");
+const { getExtensionFile, keywordReplace } = require("../utils/utils.js");
 
 let completionItemsData = [];
 let completionProvider = null;
@@ -27,8 +27,8 @@ async function codeSnippetsTip(context) {
     completionItemsData.push({
       label: key,
       detail: "saveCodeSnippetsAndReusePlugins",
-      documentation: snippets[key],
-      insertText: snippets[key],
+      documentation: keywordReplace(snippets[key]),
+      insertText: keywordReplace(snippets[key]),
     });
   }
   const config = await getExtensionFile(context, "config/config.json");
