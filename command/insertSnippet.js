@@ -1,6 +1,9 @@
 const vscode = require("vscode");
 const fs = require("fs");
 const path = require("path");
+
+const { keywordReplace } = require("../utils/utils");
+
 // 注册插入代码片段的命令
 function insertSnippet(context) {
   const insertSnippetDisposable = vscode.commands.registerCommand(
@@ -31,7 +34,7 @@ function insertSnippet(context) {
           if (selectedSnippet) {
             const position = editor.selection.start;
             editor.edit((editBuilder) => {
-              editBuilder.insert(position, selectedSnippet);
+              editBuilder.insert(position, keywordReplace(selectedSnippet));
             });
           }
         }

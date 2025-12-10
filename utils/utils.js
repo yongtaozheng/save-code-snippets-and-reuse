@@ -44,8 +44,34 @@ async function getInput(name, value = "") {
   return inputVal;
 }
 
+// 获取当前编辑的文件名，根据参数判断是否需要不带文件扩展名
+function getCurrentFileName(needExtension = false) {
+  const editor = vscode.window.activeTextEditor;
+  if (editor) {
+    const fileName = path.basename(
+      editor.document.fileName,
+      needExtension ? "" : path.extname(editor.document.fileName)
+    );
+    return fileName;
+  }
+  return null;
+}
+
+function keywordReplace(str) {
+  const fileName = getCurrentFileName();
+  const fileNameWithExt = getCurrentFileName(true);
+  str = str.replace(/(【【fileName】】)|(【【文件名】】)/g, fileName);
+  str = str.replace(
+    /(【【fileNameWithExt】】)|(【【文件名带扩展名】】)/g,
+    fileNameWithExt
+  );
+  return str;
+}
+
 module.exports = {
   merge,
   getExtensionFile,
   getInput,
+  getCurrentFileName,
+  keywordReplace,
 };
